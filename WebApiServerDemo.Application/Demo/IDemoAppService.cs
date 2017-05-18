@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 using Abp.Application.Services;
+using Abp.Web.Models;
+using WebApiServerDemo.Demo.Dto;
 
 namespace WebApiServerDemo.Demo
 {
     public interface IDemoAppService : IApplicationService
     {
-        /// <summary>
-        /// Just call the operation
-        /// </summary>
         void Test1();
 
-        /// <summary>
-        /// Convert value to string
-        /// </summary>
-        /// <param name="input">Input value</param>
-        /// <returns>Converted value</returns>
         string Test2(int input);
+
+        string Test3(TwoStringInput input);
+
+        [DontWrapResult]
+        string Test4(TwoStringInput input);
+
+        [HttpGet]
+        string Test5(string str1, string str2);
     }
 }

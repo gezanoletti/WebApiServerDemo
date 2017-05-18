@@ -131,7 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demo\DemoAppService.cs" />
-    <Compile Include="Demo\Dto\TwoStringInput.cs" />
+    <Compile Include="Demo\Dto\PersonDto.cs" />
+    <Compile Include="Demo\Dto\PersonInput.cs" />
+    <Compile Include="Demo\Dto\PersonOutput.cs" />
     <Compile Include="Demo\IDemoAppService.cs" />
     <Compile Include="WebApiServerDemoApplicationModule.cs" />
     <Compile Include="WebApiServerDemoAppServiceBase.cs" />

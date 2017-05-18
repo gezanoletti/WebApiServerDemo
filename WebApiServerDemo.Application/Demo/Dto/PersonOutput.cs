@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace WebApiServerDemo.Demo.Dto
 {
-    public class TwoStringInput
-    {
-        public string Str1 { get; set; }
-
-        public string Str2 { get; set; }
-    }
+	public class PersonOutput
+	{
+		public PersonDto Person { get; set; }
+	}
 }

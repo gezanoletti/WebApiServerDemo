@@ -10,18 +10,16 @@ using WebApiServerDemo.Demo.Dto;
 
 namespace WebApiServerDemo.Demo
 {
-    public interface IDemoAppService : IApplicationService
-    {
-        void Test1();
+	public interface IDemoAppService : IApplicationService
+	{
+		void DoProcess();
 
-        string Test2(int input);
+		bool ExistsPerson(PersonInput input);
 
-        string Test3(TwoStringInput input);
+		PersonOutput CreatePerson(PersonInput input);
 
-        [DontWrapResult]
-        string Test4(TwoStringInput input);
+		int? GetPersonIdFromCode([FromUri] string input);
 
-        [HttpGet]
-        string Test5(string str1, string str2);
-    }
+		void DoUnsupportedProcess();
+	}
 }

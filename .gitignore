@@ -19,3 +19,4 @@ WebApiServerDemo.WebApi/bin/Debug/*
 WebApiServerDemo.Web/App_Data/Logs/*
 
 WebApiServerDemo.Web/App_Data/Logs/*
+WebApiServerDemo.Web/Properties/PublishProfiles/*

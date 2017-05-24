@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services;
+using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.Web.Models;
 using WebApiServerDemo.Demo.Dto;
@@ -13,17 +14,21 @@ namespace WebApiServerDemo.Demo
 {
 	public class DemoAppService : ApplicationService, IDemoAppService
 	{
+		
+		[AbpAuthorize]
 		public void DoProcess()
 		{
 
 		}
 
+		[AbpAuthorize]
 		public bool ExistsPerson(PersonInput input)
 		{
 			//...
 			return true;
 		}
 
+		[AbpAuthorize]
 		public PersonOutput CreatePerson(PersonInput input)
 		{
 			return new PersonOutput
@@ -38,6 +43,7 @@ namespace WebApiServerDemo.Demo
 			};
 		}
 
+		[AbpAuthorize]
 		public int? GetPersonIdFromCode(string input)
 		{
 			if ("0001".Equals(input))
@@ -50,6 +56,7 @@ namespace WebApiServerDemo.Demo
 			}
 		}
 
+		[AbpAuthorize]
 		public void DoUnsupportedProcess()
 		{
 			throw new AbpException("Dont call this");

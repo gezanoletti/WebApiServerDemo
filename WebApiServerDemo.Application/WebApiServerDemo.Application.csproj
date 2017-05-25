@@ -130,11 +130,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Demo\DemoAppService.cs" />
-    <Compile Include="Demo\Dto\PersonDto.cs" />
-    <Compile Include="Demo\Dto\PersonInput.cs" />
-    <Compile Include="Demo\Dto\PersonOutput.cs" />
-    <Compile Include="Demo\IDemoAppService.cs" />
+    <Compile Include="Students\Dto\BulkUpdateStudentInput.cs" />
+    <Compile Include="Students\Dto\UpdateStudentInput.cs" />
+    <Compile Include="Students\StudentAppService.cs" />
+    <Compile Include="Students\Dto\StudentDto.cs" />
+    <Compile Include="Students\Dto\CreateStudentInput.cs" />
+    <Compile Include="Students\Dto\StudentOutput.cs" />
+    <Compile Include="Students\IStudentAppService.cs" />
     <Compile Include="WebApiServerDemoApplicationModule.cs" />
     <Compile Include="WebApiServerDemoAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />

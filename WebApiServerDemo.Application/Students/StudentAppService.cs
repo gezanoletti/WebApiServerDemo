@@ -8,11 +8,12 @@ using Abp.Application.Services;
 using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.Web.Models;
-using WebApiServerDemo.Demo.Dto;
+using WebApiServerDemo.Students;
+using WebApiServerDemo.Students.Dto;
 
 namespace WebApiServerDemo.Demo
 {
-	public class DemoAppService : ApplicationService, IDemoAppService
+	public class StudentAppService : ApplicationService, IStudentAppService
 	{
 		
 		[AbpAuthorize]
@@ -22,18 +23,18 @@ namespace WebApiServerDemo.Demo
 		}
 
 		[AbpAuthorize]
-		public bool ExistsPerson(PersonInput input)
+		public bool ExistsStudent(CreateStudentInput input)
 		{
 			//...
 			return true;
 		}
 
 		[AbpAuthorize]
-		public PersonOutput CreatePerson(PersonInput input)
+		public StudentOutput CreateStudent(CreateStudentInput input)
 		{
-			return new PersonOutput
+			return new StudentOutput
 			{
-				Person = new PersonDto
+				Student = new StudentDto
 				{
 					Id = 1,
 					Code = "0001",
@@ -44,7 +45,7 @@ namespace WebApiServerDemo.Demo
 		}
 
 		[AbpAuthorize]
-		public int? GetPersonIdFromCode(string input)
+		public int? FindIdFromCode(string input)
 		{
 			if ("0001".Equals(input))
 			{

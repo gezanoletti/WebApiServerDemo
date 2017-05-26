@@ -8,39 +8,53 @@ namespace WebApiServerDemo.Students
 	public interface IStudentAppService : IApplicationService
 	{
 		// POST students/{process_name}/start
+        [HttpPost]
 		void DoProcess();
 
-		// POST students/{process_name}/start
-		void DoUnsupportedProcess();
+        // POST students/{process_name}/start
+        [HttpPost]
+        void DoUnsupportedProcess();
 
-		// POST /students
-		StudentOutput CreateStudent(CreateStudentInput input);
+        // POST /students
+        [HttpPost]
+        [ActionName("students")]
+        void CreateStudent(CreateStudentInput input);
 
-		// GET /students/{id}
-		StudentOutput GetStudent(int id);
+        // GET /students/{id}
+        [HttpGet]
+        StudentOutput GetStudent(int id);
 
-		// GET /students/?active={active}
-		ListResultDto<StudentDto> GetStudents([FromUri] bool active);
+        // GET /students/?active={active}
+        [HttpGet]
+        [ActionName("students")]
+        ListResultDto<StudentDto> GetStudents([FromUri] bool active);
 
-		// GET /students/id/{id}
-		int? FindIdFromCode(string code);
+        // GET /students/id/{id}
+        [HttpGet]
+        int? FindIdFromCode(string code);
 
-		// GET /students/code/{code}
-		string FindCodeFromId(int id);
+        // GET /students/code/{code}
+        [HttpGet]
+        string FindCodeFromId(int id);
 
-		// GET /students/?name={}&surname={}
-		bool ExistsStudent([FromUri] string name, [FromUri] string surname);
+        // GET /students/?name={}&surname={}
+        [HttpGet]
+        bool ExistsStudent([FromUri] string name, [FromUri] string surname);
 
-		// PUT /students
-		void UpdateStudents(BulkUpdateStudentInput input);
+        // PUT /students
+        [HttpPut]
+        void UpdateStudents(BulkUpdateStudentInput input);
 
-		// PUT /students/{id}
-		void UpdateStudent(UpdateStudentInput input);
+        // PUT /students/{id}
+        [HttpPut]
+        void UpdateStudent(UpdateStudentInput input);
 
-		// DELETE /students/{id}
-		void DeleteStudent(int id);
+        // DELETE /students/{id}
+        [HttpDelete]
+        void DeleteStudent(int id);
 
-		// DELETE /students/
-		void DeleteAllStudents();
+        // DELETE /students/
+        [HttpDelete]
+        void DeleteAllStudents();
 	}
 }

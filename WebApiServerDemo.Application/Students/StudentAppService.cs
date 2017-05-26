@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Abp;
 using Abp.Application.Services;
+using Abp.Application.Services.Dto;
 using Abp.Authorization;
-using Abp.Authorization.Users;
-using Abp.Web.Models;
-using WebApiServerDemo.Students;
 using WebApiServerDemo.Students.Dto;
 
-namespace WebApiServerDemo.Demo
+namespace WebApiServerDemo.Students
 {
 	public class StudentAppService : ApplicationService, IStudentAppService
 	{
@@ -30,21 +25,52 @@ namespace WebApiServerDemo.Demo
 		}
 
 		[AbpAuthorize]
-		public StudentOutput CreateStudent(CreateStudentInput input)
+		public void CreateStudent(CreateStudentInput input)
 		{
-			return new StudentOutput
-			{
-				Student = new StudentDto
-				{
-					Id = 1,
-					Code = "0001",
-					Name = input.Name,
-					Surname = input.Surname
-				}
-			};
+			//...
 		}
 
-		[AbpAuthorize]
+        [AbpAuthorize]
+        public StudentOutput GetStudent(int id)
+	    {
+            return new StudentOutput
+            {
+                Student = new StudentDto
+                {
+                    Id = id,
+                    Code = "0001",
+                    Name = "No",
+                    Surname = "One"
+                }
+            };
+        }
+
+        [AbpAuthorize]
+        public ListResultDto<StudentDto> GetStudents(bool active)
+	    {
+	        return new ListResultDto<StudentDto>
+	        {
+	            Items = new List<StudentDto>
+	            {
+                    new StudentDto
+                    {
+                        Id = 1,
+                        Code = "0001",
+                        Name = "No",
+                        Surname = "One"
+                    },
+                    new StudentDto
+                    {
+                        Id = 2,
+                        Code = "0002",
+                        Name = "No",
+                        Surname = "One Too"
+                    },
+                }
+	        };
+	    }
+
+	    [AbpAuthorize]
 		public int? FindIdFromCode(string input)
 		{
 			if ("0001".Equals(input))
@@ -57,7 +83,43 @@ namespace WebApiServerDemo.Demo
 			}
 		}
 
-		[AbpAuthorize]
+        [AbpAuthorize]
+        public string FindCodeFromId(int id)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+        [AbpAuthorize]
+        public bool ExistsStudent(string name, string surname)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+        [AbpAuthorize]
+        public void UpdateStudents(BulkUpdateStudentInput input)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+        [AbpAuthorize]
+        public void UpdateStudent(UpdateStudentInput input)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+        [AbpAuthorize]
+        public void DeleteStudent(int id)
+	    {
+	        throw new NotImplementedException();
+	    }
+
+        [AbpAuthorize]
+        public void DeleteAllStudents()
+	    {
+	        throw new NotImplementedException();
+	    }
+
+	    [AbpAuthorize]
 		public void DoUnsupportedProcess()
 		{
 			throw new AbpException("Dont call this");

@@ -2,10 +2,13 @@
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.Routing;
 using Abp.Application.Services;
 using Abp.Configuration.Startup;
 using Abp.Modules;
+using Abp.Web;
 using Abp.WebApi;
+using WebApiServerDemo.Students;
 
 namespace WebApiServerDemo.Api
 {
@@ -20,18 +23,7 @@ namespace WebApiServerDemo.Api
                 .ForAll<IApplicationService>(typeof(WebApiServerDemoApplicationModule).Assembly, "app")
                 .Build();
 
-            Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
-                .ForAll<IApplicationService>(typeof (WebApiServerDemoApplicationModule).Assembly, "app")
-                .ForMethods(b =>
-                {
-                    if (b.Method.IsDefined(typeof (ActionNameAttribute)))
-                    {
-                        var s = b.ActionName;
-                        Console.WriteLine(s);
-                    }
-                });
-
-            Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
+			Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
 		}		
 	}
 }

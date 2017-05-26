@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Http;
 using Abp;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
@@ -25,6 +26,7 @@ namespace WebApiServerDemo.Students
 		}
 
 		[AbpAuthorize]
+		[ActionName("students")]
 		public void CreateStudent(CreateStudentInput input)
 		{
 			//...
@@ -46,7 +48,8 @@ namespace WebApiServerDemo.Students
         }
 
         [AbpAuthorize]
-        public ListResultDto<StudentDto> GetStudents(bool active)
+		[ActionName("students")]
+		public ListResultDto<StudentDto> GetStudents(bool active)
 	    {
 	        return new ListResultDto<StudentDto>
 	        {

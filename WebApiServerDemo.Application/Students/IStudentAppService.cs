@@ -16,8 +16,7 @@ namespace WebApiServerDemo.Students
         void DoUnsupportedProcess();
 
         // POST /students
-        [HttpPost]
-        [ActionName("students")]
+        [HttpPost]        
         void CreateStudent(CreateStudentInput input);
 
         // GET /students/{id}
@@ -26,7 +25,6 @@ namespace WebApiServerDemo.Students
 
         // GET /students/?active={active}
         [HttpGet]
-        [ActionName("students")]
         ListResultDto<StudentDto> GetStudents([FromUri] bool active);
 
         // GET /students/id/{id}

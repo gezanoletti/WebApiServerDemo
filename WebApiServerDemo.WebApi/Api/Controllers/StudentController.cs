@@ -12,7 +12,8 @@ using WebApiServerDemo.Students.Dto;
 
 namespace WebApiServerDemo.Api.Controllers
 {
-	public class StudentController : AbpApiController
+    [RoutePrefix("api/students")]
+    public class StudentController : AbpApiController
 	{
 		[HttpPost]
 		public void DoProcess()
@@ -25,30 +26,33 @@ namespace WebApiServerDemo.Api.Controllers
 		{
 			throw new NotImplementedException();
 		}
-
-		[HttpPost]
-		public void CreateStudent(CreateStudentInput input)
+        
+        [HttpPost]
+        [Route("")]
+        public void CreateStudent(CreateStudentInput input)
 		{
-			throw new NotImplementedException();
+			
 		}
-
+        
 		[HttpGet]
-		public StudentOutput GetStudent(int id)
+        [Route("{id:int}")]
+        public StudentOutput GetStudent(int id)
 		{
 			return new StudentOutput
 			{
 				Student = new StudentDto
 				{
-					Id = 1,
+					Id = id,
 					Code = "0001",
 					Name = "No",
 					Surname = "One"
 				}
 			};
 		}
-
-		[HttpGet]
-		public ListResultDto<StudentDto> GetStudents(bool active)
+        
+        [HttpGet]
+        [Route("")]
+        public ListResultDto<StudentDto> GetStudents(bool active)
 		{
 			return new ListResultDto<StudentDto>
 			{
@@ -73,43 +77,57 @@ namespace WebApiServerDemo.Api.Controllers
 		}
 
 		[HttpGet]
-		public int? FindIdFromCode(string code)
+        [Route("query/code/{code}")]
+        public int? FindIdFromCode(string code)
 		{
-			throw new NotImplementedException();
+		    try
+		    {
+		        return Convert.ToInt32(code);
+		    }
+		    catch (Exception)
+		    {
+		        return null;
+		    }
 		}
 
 		[HttpGet]
-		public string FindCodeFromId(int id)
+        [Route("query/id/{id}")]
+        public string FindCodeFromId(int id)
 		{
-			throw new NotImplementedException();
+		    return id.ToString();
 		}
 
 		[HttpGet]
-		public bool ExistsStudent(string name, string surname)
+        [Route("query/name/{name}/surname/{surname}")]
+        public bool ExistsStudent(string name, string surname)
 		{
-			throw new NotImplementedException();
+		    return "No".Equals(name) && "One".Equals(surname);
+		}
+
+		[HttpPatch]
+        [Route("")]
+        public void UpdateStudents(BulkUpdateStudentInput input)
+		{
+			
 		}
 
 		[HttpPut]
-		public void UpdateStudents(BulkUpdateStudentInput input)
+        [Route("")]
+        public void UpdateStudent(UpdateStudentInput input)
 		{
-			throw new NotImplementedException();
+			
 		}
 
-		[HttpPut]
-		public void UpdateStudent(UpdateStudentInput input)
+		[HttpDelete]
+        [Route("{id}")]
+        public void DeleteStudent(int id)
 		{
 			throw new NotImplementedException();
 		}
 
 		[HttpDelete]
-		public void DeleteStudent(int id)
-		{
-			throw new NotImplementedException();
-		}
-
-		[HttpDelete]
-		public void DeleteAllStudents()
+        [Route("")]
+        public void DeleteAllStudents()
 		{
 			throw new NotImplementedException();
 		}

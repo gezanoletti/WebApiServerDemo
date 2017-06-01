@@ -19,6 +19,8 @@ namespace WebApiServerDemo.Api
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
+            Configuration.Modules.AbpWebApi().HttpConfiguration.MapHttpAttributeRoutes(); // OJO
+
             Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
                 .ForAll<IApplicationService>(typeof(WebApiServerDemoApplicationModule).Assembly, "app")
                 .Build();

@@ -26,14 +26,13 @@ namespace WebApiServerDemo.Students
 		}
 
 		[AbpAuthorize]
-		[ActionName("students")]
 		public void CreateStudent(CreateStudentInput input)
 		{
 			//...
 		}
 
         [AbpAuthorize]
-        public StudentOutput GetStudent(int id)
+		public StudentOutput GetStudent(int id)
 	    {
             return new StudentOutput
             {
@@ -48,7 +47,6 @@ namespace WebApiServerDemo.Students
         }
 
         [AbpAuthorize]
-		[ActionName("students")]
 		public ListResultDto<StudentDto> GetStudents(bool active)
 	    {
 	        return new ListResultDto<StudentDto>

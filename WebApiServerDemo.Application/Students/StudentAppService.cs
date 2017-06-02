@@ -86,38 +86,41 @@ namespace WebApiServerDemo.Students
 
         [AbpAuthorize]
         public string FindCodeFromId(int id)
-	    {
-	        throw new NotImplementedException();
-	    }
+        {
+            return id.ToString();
+        }
 
         [AbpAuthorize]
         public bool ExistsStudent(string name, string surname)
 	    {
-	        throw new NotImplementedException();
-	    }
+            return "No".Equals(name) && "One".Equals(surname);
+        }
 
         [AbpAuthorize]
         public void UpdateStudents(BulkUpdateStudentInput input)
 	    {
-	        throw new NotImplementedException();
+	        //
 	    }
 
         [AbpAuthorize]
         public void UpdateStudent(UpdateStudentInput input)
 	    {
-	        throw new NotImplementedException();
+	        //
 	    }
 
         [AbpAuthorize]
         public void DeleteStudent(int id)
 	    {
-	        throw new NotImplementedException();
+            if (id != 1)
+            {
+                throw new AbpException();
+            }
 	    }
 
         [AbpAuthorize]
         public void DeleteAllStudents()
 	    {
-	        throw new NotImplementedException();
+	        //
 	    }
 
 	    [AbpAuthorize]
